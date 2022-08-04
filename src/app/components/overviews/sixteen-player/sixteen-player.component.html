@@ -1,0 +1,31 @@
+<div class="container">
+  <div
+    *ngFor="let match of matches; let i = index"
+    [ngClass]="{
+      'first-col': match.matchNumber <= 8,
+      'second-col': match.matchNumber <= 12 && match.matchNumber > 8,
+      'third-col': match.matchNumber <= 14 && match.matchNumber > 12,
+      'fourth-col': match.matchNumber == 15
+    }"
+    [ngStyle]="{
+      'grid-row': getRow(match.matchNumber)
+    }"
+  >
+    <app-match [match]="match"></app-match>
+  </div>
+
+  <b class="line line--1"></b>
+  <b class="line line--2"></b>
+  <b class="line line--3"></b>
+  <b class="line line--4"></b>
+  <b class="line line--5"></b>
+  <b class="line line--6"></b>
+  <b class="line line--7"></b>
+  <b class="line line--8"></b><b class="line line--9"></b>
+  <b class="line line--10"></b><b class="line line--11"></b>
+  <b class="line line--12"></b><b class="line line--13"></b>
+  <b class="line line--14"></b><b class="line line--15"></b>
+  <b class="line line--16"></b><b class="line line--17"></b>
+  <b class="line line--18"></b><b class="line line--19"></b>
+  <b class="line line--20"></b><b class="line line--21"></b>
+</div>

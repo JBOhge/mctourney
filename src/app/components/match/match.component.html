@@ -1,0 +1,15 @@
+<div class="match">
+  <div class="match__player">
+    <app-match-player-info [player]="match.firstPlayer"></app-match-player-info>
+    <p class="match__score">{{ match.scoreFirstPlayer }}</p>
+    <button (click)="incrementScore(1)" [disabled]="match.winner">+</button>
+  </div>
+  <p class="match__text">VS.</p>
+  <div class="match__player">
+    <app-match-player-info
+      [player]="match.secondPlayer"
+    ></app-match-player-info>
+    <p class="match__score">{{ match.scoreSecondPlayer }}</p>
+    <button (click)="incrementScore(2)" [disabled]="match.winner">+</button>
+  </div>
+</div>

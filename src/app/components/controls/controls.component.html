@@ -1,0 +1,10 @@
+<button (click)="create4PT()">Create 4P Tournament</button>
+<button (click)="create8PT()">Create 8P Tournament</button>
+<button (click)="create16PT()">Create 16P Tournament</button>
+<form [formGroup]="playerForm" (ngSubmit)="addPlayer()">
+  <label for="username">Username: </label>
+  <input type="text" id="username" formControlName="username" />
+  <label for="playerId">PlayerId: </label>
+  <input type="text" id="playerId" formControlName="playerId" />
+  <button type="submit">Add Player</button>
+</form>

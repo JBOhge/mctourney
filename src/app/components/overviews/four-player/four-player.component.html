@@ -1,0 +1,18 @@
+<div class="container">
+  <div
+    *ngFor="let match of matches; let i = index"
+    [ngClass]="{
+      'first-col': match.matchNumber <= 2,
+      'second-col': match.matchNumber == 3
+    }"
+    [ngStyle]="{
+      'grid-row': getRow(match.matchNumber)
+    }"
+  >
+    <app-match [match]="match"></app-match>
+  </div>
+
+  <b class="line line--1"></b>
+  <b class="line line--2"></b>
+  <b class="line line--3"></b>
+</div>

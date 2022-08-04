@@ -1,0 +1,47 @@
+.player-info {
+  display: grid;
+  grid-template-columns: 1fr 3fr ;
+  width: 100%;
+  max-width: 400px;
+  height: 5vw;
+  max-height: 100px;
+  // border: 2px solid black;
+  justify-items: center;
+  align-items: center;
+
+  @media only screen and (max-width: 1500px) {
+    height: 80px;
+    max-height: none;
+  }
+
+  &__image {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    padding: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  &__name {
+    font-size: 1.5rem;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    justify-self: center;
+    align-self: center;
+    font-weight: 600;
+  }
+  &__score {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    border-left: 2px solid black;
+    font-size: 1.5rem;
+    font-weight: 600;
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+  }
+}

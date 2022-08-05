@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MatchComponent } from './components/match/match.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
 import { OverviewComponent } from './components/overview/overview.component';
 
-const appRoutes: Routes = [{path: '', component: OverviewComponent}];
+const appRoutes: Routes = [
+  { path: 'tournament', component: OverviewComponent },
+  { path: '', component: HomepageComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes)],

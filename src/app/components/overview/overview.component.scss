@@ -1,0 +1,12 @@
+.overview {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+
+  &__tournament {
+    grid-column: 1 / 8;
+
+  }
+  &__playerlist {
+    grid-column: 8 / 9;
+  }
+}

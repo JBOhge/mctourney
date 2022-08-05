@@ -1,7 +1,12 @@
 <app-controls></app-controls>
-<app-sixteen-player *ngIf="tSize === 16"></app-sixteen-player>
-<app-eight-player *ngIf="tSize === 8"></app-eight-player>
-<app-four-player *ngIf="tSize === 4"></app-four-player>
-<p *ngIf="tSize === 0">Select a Tournament Size</p>
-
-<!-- <app-match-list></app-match-list> -->
+<div class="overview">
+  <div class="overview__tournament">
+    <app-sixteen-player *ngIf="tSize === 16"></app-sixteen-player>
+    <app-eight-player *ngIf="tSize === 8"></app-eight-player>
+    <app-four-player *ngIf="tSize === 4"></app-four-player>
+    <p *ngIf="tSize === 0">Select a Tournament Size</p>
+  </div>
+  <div class="overview__playerlist">
+    <app-player-list></app-player-list>
+  </div>
+</div>

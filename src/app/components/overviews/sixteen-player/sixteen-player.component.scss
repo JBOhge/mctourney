@@ -12,7 +12,7 @@ $line-width: 4px;
   grid-template-rows: repeat(16, 120px);
   align-items: center;
   justify-items: center;
-  min-width: 1600px;
+  // min-width: 1600px;
 
   @media only screen and (min-width: 1500px) {
     grid-template-rows: repeat(16, 140px);

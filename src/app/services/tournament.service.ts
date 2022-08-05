@@ -11,7 +11,8 @@ const scoreToWin = 3;
 export class TournamentService {
   public matches = new BehaviorSubject<Match[]>([]);
   public tSize = new BehaviorSubject<number>(0);
-  private tPlayers = 0;
+  public players = new BehaviorSubject<Player[]>([]);
+  private playersCount = 0;
 
   constructor() {}
 
@@ -118,19 +119,48 @@ export class TournamentService {
   }
 
   addPlayer(player: Player) {
-    if (this.tSize.value <= this.tPlayers) {
+    let newPlayers = this.players.value;
+    if (this.playersCount < this.tSize.value) {
+      newPlayers.push(player);
+      this.playersCount++;
+      this.players.next(newPlayers);
+    }
+  }
+
+  removePlayer(playerName: string) {
+    let newPlayers = this.players.value.filter((player) => {
+      return player.username != playerName;
+    });
+
+    this.players.next(newPlayers);
+    this.playersCount = newPlayers.length;
+  }
+
+  startTournament() {
+    if (this.playersCount < this.tSize.value) {
       return;
     }
+    let playersList = this.shuffle([...this.players.value]);
+    let newMatches = this.matches.value;
 
-    let matchIndex = ~~(this.tPlayers / 2);
-    let newMatches: Match[] = this.matches.value;
-    if (newMatches[matchIndex].firstPlayer.username === 'TBD') {
-      newMatches[matchIndex].firstPlayer = player;
-    } else {
-      newMatches[matchIndex].secondPlayer = player;
+    for (let i = 0; i < this.tSize.value; i += 1) {
+      let matchIndex = ~~(i / 2);
+      if (i % 2 === 0) {
+        newMatches[matchIndex].firstPlayer = playersList[i];
+      } else {
+        newMatches[matchIndex].secondPlayer = playersList[i];
+      }
     }
-    this.tPlayers++;
+
     this.matches.next(newMatches);
+  }
+
+  private shuffle(a: any[]) {
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
   }
 
   incrementMatchScore(matchNumber: number, playerNumber: number) {
@@ -157,11 +187,11 @@ export class TournamentService {
     }
     this.matches.next(newMatches);
     if (winner) {
-      this.processWinner(matchIndex, playerNumber);
+      this.processWinner(matchIndex);
     }
   }
 
-  private processWinner(matchIndex: number, playerNumber: number) {
+  private processWinner(matchIndex: number) {
     let newMatches = this.matches.value;
     let nextMatchIndex = newMatches[matchIndex].nextMatch;
     if (nextMatchIndex && nextMatchIndex <= 0) {

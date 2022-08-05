@@ -1,0 +1,12 @@
+<h3>Player List:</h3>
+<form [formGroup]="playerForm" (ngSubmit)="addPlayer()">
+  <label for="username">Username: </label>
+  <input type="text" id="username" formControlName="username" />
+  <label for="playerId">PlayerId: </label>
+  <input type="text" id="playerId" formControlName="playerId" />
+  <button type="submit">Add Player</button>
+  <button type="button" (click)="removePlayer()">Remove Player</button>
+</form>
+<div *ngFor="let playerItem of playerList">
+  <app-match-player-info [player]="playerItem"></app-match-player-info>
+</div>

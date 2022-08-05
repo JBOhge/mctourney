@@ -3,10 +3,10 @@ $line-width: 4px;
 .container {
   display: grid;
   grid-template-columns:
-    1fr [match-start] minmax(min-content, 400px) [match-end]
+    2fr [match-start] minmax(min-content, 400px) [match-end]
     minmax(2rem, 1fr) minmax(2rem, 1fr) [match-start]
     minmax(min-content, 400px) [match-end]
-    1fr;
+    2fr;
   // gap: 1rem;
   grid-template-rows: repeat(4, 120px);
   align-items: center;

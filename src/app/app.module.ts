@@ -12,6 +12,9 @@ import { OverviewComponent } from './components/overview/overview.component';
 import { FourPlayerComponent } from './components/overviews/four-player/four-player.component';
 import { EightPlayerComponent } from './components/overviews/eight-player/eight-player.component';
 import { SixteenPlayerComponent } from './components/overviews/sixteen-player/sixteen-player.component';
+import { PlayerListComponent } from './components/player-list/player-list.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import { SixteenPlayerComponent } from './components/overviews/sixteen-player/si
     FourPlayerComponent,
     EightPlayerComponent,
     SixteenPlayerComponent,
+    PlayerListComponent,
+    NavbarComponent,
+    HomepageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule],
   providers: [],

@@ -1,16 +1,12 @@
 <nav class="navbar">
-  <h1>MCTOURNY</h1>
-  <ul>
-    <li>
-      <a
-        routerLink="/"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        >Home</a
-      >
-    </li>
-    <li>
-      <a routerLink="/tournament" routerLinkActive="active">Tournament</a>
-    </li>
-  </ul>
+  <h1 routerLink="/" class="pointer">MCTOURNY</h1>
+
+  <a routerLink="/tournament" routerLinkActive="active">Tournament</a>
+  <a
+    routerLink="/tournaments"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    >List</a
+  >
+  <a routerLink="/tournaments/create" routerLinkActive="active">Create</a>
 </nav>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Match } from 'src/app/models/match.model';
 import { TournamentService } from 'src/app/services/tournament.service';

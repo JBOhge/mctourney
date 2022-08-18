@@ -7,6 +7,7 @@ import { MatchPlayerInfoComponent } from './components/match-player-info/match-p
 import { MatchComponent } from './components/match/match.component';
 import { MatchListComponent } from './components/match-list/match-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { ControlsComponent } from './components/controls/controls.component';
 import { OverviewComponent } from './components/overview/overview.component';
 import { FourPlayerComponent } from './components/overviews/four-player/four-player.component';
@@ -15,6 +16,10 @@ import { SixteenPlayerComponent } from './components/overviews/sixteen-player/si
 import { PlayerListComponent } from './components/player-list/player-list.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { TournamentListComponent } from './components/tournament-list/tournament-list.component';
+import { TournamentOverviewComponent } from './components/tournament-overview/tournament-overview.component';
+import { TournamentEditComponent } from './components/tournament-edit/tournament-edit.component';
+import { TournamentCreateComponent } from './components/tournament-create/tournament-create.component';
 
 @NgModule({
   declarations: [
@@ -30,8 +35,18 @@ import { HomepageComponent } from './components/homepage/homepage.component';
     PlayerListComponent,
     NavbarComponent,
     HomepageComponent,
+    TournamentListComponent,
+    TournamentOverviewComponent,
+    TournamentEditComponent,
+    TournamentCreateComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

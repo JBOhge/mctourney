@@ -20,6 +20,7 @@ export class PlayerListComponent implements OnInit, OnDestroy {
     this.playersSub = this.tService.players.subscribe((playerList) => {
       this.playerList = playerList;
     });
+
     this.playerForm = new FormGroup({
       username: new FormControl('', [Validators.required]),
       playerId: new FormControl('', [Validators.required]),
@@ -31,9 +32,9 @@ export class PlayerListComponent implements OnInit, OnDestroy {
 
   addPlayer() {
     let player = {
+      _id: '',
       username: this.playerForm.value.username,
       playerId: this.playerForm.value.playerId,
-      score: 0,
     };
     this.tService.addPlayer(player);
     this.playerForm.reset();

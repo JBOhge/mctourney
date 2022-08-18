@@ -14,7 +14,7 @@ export class OverviewComponent implements OnInit, OnDestroy {
   constructor(private tService: TournamentService) {}
 
   ngOnInit(): void {
-    this.tSizeSub = this.tService.tSize.subscribe((tSize) => {
+    this.tSizeSub = this.tService.size.subscribe((tSize) => {
       this.tSize = tSize;
     });
   }

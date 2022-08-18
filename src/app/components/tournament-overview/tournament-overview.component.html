@@ -1,0 +1,8 @@
+<div *ngIf="tournamentObs | async as data">
+  <div class="overview__tournament">
+    <app-sixteen-player *ngIf="data.tournament.size === 16"></app-sixteen-player>
+    <app-eight-player *ngIf="data.tournament.size === 8"></app-eight-player>
+    <app-four-player *ngIf="data.tournament.size === 4"></app-four-player>
+    <p *ngIf="data.tournament.size === 0">error</p>
+  </div>
+</div>

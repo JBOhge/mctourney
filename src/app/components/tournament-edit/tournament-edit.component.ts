@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Observable, tap } from 'rxjs';
 import { Tournament } from 'src/app/models/tournament.model';
-import { TournamentService } from 'src/app/services/tournament.service';
+import { TournamentDataService } from 'src/app/services/tournament-data.service';
 
 @Component({
   selector: 'app-tournament-edit',
@@ -11,12 +10,13 @@ import { TournamentService } from 'src/app/services/tournament.service';
   styleUrls: ['./tournament-edit.component.css'],
 })
 export class TournamentEditComponent implements OnInit {
-  tournamentObs!: Observable<{ tournament: Tournament }>;
+  tournament!: Tournament;
   id!: string;
   tournamentForm!: FormGroup;
+  playerForm!: FormGroup;
 
   constructor(
-    private tService: TournamentService,
+    private tDataService: TournamentDataService,
     private route: ActivatedRoute
   ) {}
 
@@ -25,23 +25,58 @@ export class TournamentEditComponent implements OnInit {
       name: new FormControl('', Validators.required),
       size: new FormControl(4, Validators.required),
     });
+
+    this.playerForm = new FormGroup({
+      username: new FormControl('', Validators.required),
+      playerId: new FormControl(''),
+    });
+
+    this.tDataService.tournamentSubject.subscribe((tournament) => {
+      this.tournament = tournament;
+      this.tournamentForm.setValue({
+        name: tournament.name,
+        size: tournament.size,
+      });
+    });
+
     this.route.params.subscribe((params: Params) => {
       this.id = params['id'];
-      this.tournamentObs = this.tService.getTournament(this.id);
-      this.tournamentObs
-        .pipe(
-          tap((body) => {
-            this.tournamentForm.setValue({
-              name: body.tournament.name,
-              size: body.tournament.size,
-            });
-          })
-        )
-        .subscribe();
+      this.tDataService.getTournament(this.id).subscribe();
     });
   }
 
-  onCreate() {
-    console.log(this.tournamentForm);
+  onUpdateSize() {
+    this.tDataService
+      .updateTournamentSize(this.tournamentForm.value.size, this.tournament._id)
+      .subscribe();
+  }
+
+  onAddPlayer() {
+    this.tDataService
+      .addPlayer(
+        this.playerForm.value.username,
+        this.playerForm.value.playerId,
+        this.tournament._id
+      )
+      .subscribe();
+  }
+
+  onRemovePlayer() {
+    let player = this.tournament.players.filter((player) => {
+      return player.username == this.playerForm.value.username;
+    });
+    if (player[0]) {
+      this.tDataService
+        .removePlayer(player[0]._id, this.tournament._id)
+        .subscribe();
+    }
+  }
+
+  onGenerateTournament() {
+    this.tDataService.generateTournament(this.tournament._id).subscribe();
+  }
+
+  onStartTournament() {
+    this.tDataService.startTournament(this.tournament._id).subscribe();
   }
 }

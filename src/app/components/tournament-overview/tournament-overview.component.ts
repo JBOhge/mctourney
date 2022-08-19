@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
 import { Tournament } from 'src/app/models/tournament.model';
-import { TournamentService } from 'src/app/services/tournament.service';
+import { TournamentDataService } from 'src/app/services/tournament-data.service';
 
 @Component({
   selector: 'app-tournament-overview',
@@ -10,11 +9,12 @@ import { TournamentService } from 'src/app/services/tournament.service';
   styleUrls: ['./tournament-overview.component.css'],
 })
 export class TournamentOverviewComponent implements OnInit {
+  @Input() editMode = false;
   id!: string;
-  tournamentObs!: Observable<any>;
+  tournament!: Tournament;
 
   constructor(
-    private tService: TournamentService,
+    private tDataService: TournamentDataService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
@@ -22,7 +22,14 @@ export class TournamentOverviewComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       this.id = params['id'];
-      this.tournamentObs = this.tService.getTournament(this.id);
+      this.tDataService.tournamentSubject.subscribe((tournament) => {
+        this.tournament = tournament;
+      });
+      this.tDataService.getTournament(this.id).subscribe({
+        next: (body) => {
+          console.log(body);
+        },
+      });
     });
   }
 }

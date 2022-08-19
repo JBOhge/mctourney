@@ -8,8 +8,6 @@ import { TournamentService } from 'src/app/services/tournament.service';
   styleUrls: ['./match.component.scss'],
 })
 export class MatchComponent implements OnInit {
-  playerOne = { username: 'Notch', playerId: '' };
-  playerTwo = { username: 'Mister_Fix', playerId: '' };
   @Input() match!: Match;
 
   constructor(private tService: TournamentService) {}

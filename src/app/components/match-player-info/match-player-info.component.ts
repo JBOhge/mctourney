@@ -7,15 +7,15 @@ import { Player } from 'src/app/models/player.model';
   styleUrls: ['./match-player-info.component.scss'],
 })
 export class MatchPlayerInfoComponent implements OnInit {
-  @Input() player!: Player; // { username: '', playerId: '', score: 0 };
+  @Input() player!: Player;
 
   constructor() {}
 
   ngOnInit(): void {}
 
   getUrl() {
-    if (this.player.username === 'TBD') {
-      return 'https://mc-heads.net/avatar';
+    if (this.player.username === 'TBD' || this.player.username === '') {
+      return 'https://mc-heads.net/avatar/MHF_Steve';
     }
     return `https://mc-heads.net/avatar/${
       this.player.playerId ? this.player.playerId : this.player.username

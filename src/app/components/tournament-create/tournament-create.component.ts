@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { TournamentDataService } from 'src/app/services/tournament-data.service';
 import { TournamentService } from 'src/app/services/tournament.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { TournamentService } from 'src/app/services/tournament.service';
 export class TournamentCreateComponent implements OnInit {
   tournamentForm!: FormGroup;
 
-  constructor(private tService: TournamentService) {}
+  constructor(private tDataService: TournamentDataService) {}
 
   ngOnInit(): void {
     this.tournamentForm = new FormGroup({
@@ -21,7 +22,7 @@ export class TournamentCreateComponent implements OnInit {
 
   onCreate() {
     if (this.tournamentForm.valid) {
-      this.tService
+      this.tDataService
         .createTournament(
           this.tournamentForm.value.size,
           this.tournamentForm.value.name

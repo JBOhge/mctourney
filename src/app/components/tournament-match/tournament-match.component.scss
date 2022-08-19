@@ -1,0 +1,24 @@
+.match {
+  width: 100%;
+
+  &__text {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+  }
+
+  &__player {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    border: 2px solid black;
+  }
+
+  &__score {
+    text-align: center;
+    margin: 0;
+    padding: 1rem 1.5rem;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+}

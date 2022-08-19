@@ -1,8 +1,21 @@
-<div *ngIf="tournamentObs | async as data">
-  <div class="overview__tournament">
-    <app-sixteen-player *ngIf="data.tournament.size === 16"></app-sixteen-player>
-    <app-eight-player *ngIf="data.tournament.size === 8"></app-eight-player>
-    <app-four-player *ngIf="data.tournament.size === 4"></app-four-player>
-    <p *ngIf="data.tournament.size === 0">error</p>
+<div *ngIf="tournament">
+
+  <div class="overview__tournament" *ngIf="tournament.matches.length > 0; else emptyTournament">
+    <app-overview-sixteen-player
+      [editMode]="editMode"
+      *ngIf="tournament.size === 16"
+    ></app-overview-sixteen-player>
+    <app-overview-eight-player
+      [editMode]="editMode"
+      *ngIf="tournament.size === 8"
+    ></app-overview-eight-player>
+    <app-overview-four-player
+      [editMode]="editMode"
+      *ngIf="tournament.size === 4"
+    ></app-overview-four-player>
+    <p *ngIf="tournament.size === 0">error</p>
   </div>
+  <ng-template #emptyTournament>
+    <p>This tournament has not been generated yet.</p>
+  </ng-template>
 </div>

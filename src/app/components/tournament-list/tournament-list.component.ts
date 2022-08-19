@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Tournament } from 'src/app/models/tournament.model';
-import { TournamentService } from 'src/app/services/tournament.service';
+import { TournamentDataService } from 'src/app/services/tournament-data.service';
 
 @Component({
   selector: 'app-tournament-list',
@@ -10,10 +10,10 @@ import { TournamentService } from 'src/app/services/tournament.service';
 export class TournamentListComponent implements OnInit {
   tournaments!: Tournament[];
 
-  constructor(private tService: TournamentService) {}
+  constructor(private tDataService: TournamentDataService) {}
 
   ngOnInit(): void {
-    this.tService.getTournaments().subscribe((data) => {
+    this.tDataService.getTournaments().subscribe((data) => {
       this.tournaments = data.tournaments;
     });
   }

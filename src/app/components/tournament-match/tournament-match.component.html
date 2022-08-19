@@ -1,0 +1,64 @@
+<div class="match">
+  <div class="match__player">
+    <button
+      (click)="undoWinner(1)"
+      *ngIf="
+        editMode && match.previousMatchFirstPlayer && match.firstPlayer.username != 'TBD'
+      "
+      [disabled]="match.winner"
+    >
+      &lAarr;
+    </button>
+    <app-match-player-info [player]="match.firstPlayer">
+    </app-match-player-info>
+    <p class="match__score">{{ match.scoreFirstPlayer }}</p>
+    <div class="match__buttons">
+      <button
+        (click)="incrementScore(1)"
+        [disabled]="match.winner"
+        *ngIf="editMode"
+      >
+        +
+      </button>
+      <button
+        (click)="decrementScore(1)"
+        [disabled]="match.winner"
+        *ngIf="editMode"
+      >
+        -
+      </button>
+    </div>
+  </div>
+  <p class="match__text">VS.</p>
+  <div class="match__player">
+    <button
+      (click)="undoWinner(2)"
+      *ngIf="
+        editMode && match.previousMatchSecondPlayer && match.secondPlayer.username != 'TBD'
+      "
+      [disabled]="match.winner"
+    >
+      &lAarr;
+    </button>
+    <app-match-player-info
+      [player]="match.secondPlayer"
+    ></app-match-player-info>
+    <p class="match__score">{{ match.scoreSecondPlayer }}</p>
+    <div class="match__buttons">
+      <button
+        (click)="incrementScore(2)"
+        [disabled]="match.winner"
+        *ngIf="editMode"
+      >
+        +
+      </button>
+      <button
+        (click)="decrementScore(2)"
+        [disabled]="match.winner"
+        *ngIf="editMode"
+      >
+        -
+      </button>
+    </div>
+  </div>
+</div>

@@ -211,28 +211,4 @@ export class TournamentService {
     }
   }
 
-  getTournaments() {
-    return this.http.get<{ tournaments: Tournament[] }>(`${api}/tournaments`);
-  }
-
-  getTournament(id: string) {
-    return this.http
-      .get<{ tournament: Tournament }>(`${api}/tournaments/${id}`, {
-        headers: new HttpHeaders({ 'Cache-Control': 'no-cache' }),
-      })
-      .pipe(
-        tap((data) => {
-          this.matches.next(data.tournament.matches);
-        })
-      );
-  }
-
-  createTournament(size: number, name: string) {
-    return this.http.post<{ tournament: Tournament }>(`${api}/tournaments`, {
-      size: size,
-      name: name,
-    });
-  }
-
-  
 }

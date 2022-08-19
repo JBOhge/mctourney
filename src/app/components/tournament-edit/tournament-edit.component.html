@@ -1,11 +1,36 @@
-<form [formGroup]="tournamentForm" (ngSubmit)="onCreate()">
+<form [formGroup]="tournamentForm">
   <label for="name">Name: </label>
   <input type="text" id="name" formControlName="name" />
+  <br />
   <label for="size">Size: </label>
   <select id="size" formControlName="size">
     <option value="4">4</option>
     <option value="8">8</option>
     <option value="16">16</option>
   </select>
-  <button type="submit">Create</button>
+  <button type="button" (click)="onUpdateSize()">Update Size</button>
 </form>
+
+<form [formGroup]="playerForm" (ngSubmit)="onAddPlayer()">
+  <label for="username">Username: </label>
+  <input type="text" id="username" formControlName="username" />
+  <label for="playerId">PlayerId: </label>
+  <input type="text" id="playerId" formControlName="playerId" />
+  <button type="submit">Add Player</button>
+  <button type="button" (click)="onRemovePlayer()">Remove Player</button>
+</form>
+
+<div class="player-list">
+  <div>{{ tournament.players.length + " / " + tournament.size }}</div>
+  <div *ngFor="let player of tournament.players">
+    <app-match-player-info [player]="player"></app-match-player-info>
+  </div>
+</div>
+
+<br />
+<div>
+  <button (click)="onGenerateTournament()">Generate Tournament</button>
+  <button (click)="onStartTournament()">Start Tournament</button>
+</div>
+
+<app-tournament-overview [editMode]="true"></app-tournament-overview>

@@ -1,7 +1,7 @@
 import { Player } from './player.model';
 
 export class Match {
-  public _id?: string;
+  public _id: string = '';
   public scoreFirstPlayer: number = 0;
   public scoreSecondPlayer: number = 0;
   public winner?: Player;
@@ -10,7 +10,7 @@ export class Match {
   public tournament?: string;
   public previousMatchFirstPlayer?: string;
   public previousMatchSecondPlayer?: string;
-  
+
 
 
   constructor(

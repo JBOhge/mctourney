@@ -20,6 +20,10 @@ import { TournamentListComponent } from './components/tournament-list/tournament
 import { TournamentOverviewComponent } from './components/tournament-overview/tournament-overview.component';
 import { TournamentEditComponent } from './components/tournament-edit/tournament-edit.component';
 import { TournamentCreateComponent } from './components/tournament-create/tournament-create.component';
+import { OverviewEightPlayerComponent } from './components/tournament-overview/overviews/overview-eight-player/overview-eight-player.component';
+import { OverviewFourPlayerComponent } from './components/tournament-overview/overviews/four-player/overview-four-player.component';
+import { OverviewSixteenPlayerComponent } from './components/tournament-overview/overviews/overview-sixteen-player/overview-sixteen-player.component';
+import { TournamentMatchComponent } from './components/tournament-match/tournament-match.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +43,10 @@ import { TournamentCreateComponent } from './components/tournament-create/tourna
     TournamentOverviewComponent,
     TournamentEditComponent,
     TournamentCreateComponent,
+    OverviewFourPlayerComponent,
+    OverviewEightPlayerComponent,
+    OverviewSixteenPlayerComponent,
+    TournamentMatchComponent,
   ],
   imports: [
     BrowserModule,

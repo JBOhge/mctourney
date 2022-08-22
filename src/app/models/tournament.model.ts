@@ -4,7 +4,7 @@ import { Player } from './player.model';
 export interface Tournament {
   _id: string;
   isStarted: boolean;
-  isCompleted: boolean;
+  isComplete: boolean;
   name: string,
   size: number;
   players: Player[];

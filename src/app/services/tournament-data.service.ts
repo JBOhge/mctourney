@@ -12,7 +12,7 @@ const api = 'http://localhost:3000/api/v1';
 export class TournamentDataService {
   public tournamentSubject = new BehaviorSubject<Tournament>({
     _id: '',
-    isCompleted: false,
+    isComplete: false,
     isStarted: false,
     name: '',
     size: 0,
@@ -102,10 +102,20 @@ export class TournamentDataService {
   }
 
   startTournament(tournamentId: string) {
-    return this.http.patch<{ tournament: Tournament }>(
-      `${api}/tournaments/${tournamentId}/start`,
-      {}
-    );
+    return this.http
+      .patch<{ tournament: Tournament }>(
+        `${api}/tournaments/${tournamentId}/start`,
+        {}
+      )
+      .pipe(
+        tap({
+          next: () => {
+            let newTournament = this.tournamentSubject.value;
+            newTournament.isStarted = true;
+            this.tournamentSubject.next(newTournament);
+          },
+        })
+      );
   }
 
   incrementMatchScore(matchId: string, playerId: string) {

@@ -20,17 +20,46 @@
   <button type="button" (click)="onRemovePlayer()">Remove Player</button>
 </form>
 
-<div class="player-list">
+<div>
   <div>{{ tournament.players.length + " / " + tournament.size }}</div>
-  <div *ngFor="let player of tournament.players">
-    <app-match-player-info [player]="player"></app-match-player-info>
+  <div class="player__list">
+    <div *ngFor="let player of tournament.players">
+      <app-match-player-info [player]="player"></app-match-player-info>
+    </div>
   </div>
 </div>
 
 <br />
-<div>
-  <button (click)="onGenerateTournament()">Generate Tournament</button>
-  <button (click)="onStartTournament()">Start Tournament</button>
+<div class="tournament__controls">
+  <button
+    (click)="onGenerateTournament()"
+    [disabled]="tournament.isComplete || tournament.isStarted"
+  >
+    Generate Tournament
+  </button>
+  <button (click)="onStartTournament()" [disabled]="tournament.isComplete">
+    Start Tournament
+  </button>
+  <div
+    class="tournament__controls__text"
+    [ngClass]="{
+      'tournament--green': tournament.isStarted,
+      'tournament--yellow': !tournament.isStarted
+    }"
+  >
+    {{ tournament.isStarted ? "STARTED" : "NOT STARTED" }}
+  </div>
+  <div
+    class="tournament__controls__text"
+    [ngClass]="{
+      'tournament--green': tournament.isComplete,
+      'tournament--yellow': !tournament.isComplete
+    }"
+  >
+    {{ tournament.isComplete ? "COMPLETE" : "NOT COMPLETE" }}
+  </div>
 </div>
+
+<div></div>
 
 <app-tournament-overview [editMode]="true"></app-tournament-overview>

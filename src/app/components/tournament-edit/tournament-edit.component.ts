@@ -7,7 +7,7 @@ import { TournamentDataService } from 'src/app/services/tournament-data.service'
 @Component({
   selector: 'app-tournament-edit',
   templateUrl: './tournament-edit.component.html',
-  styleUrls: ['./tournament-edit.component.css'],
+  styleUrls: ['./tournament-edit.component.scss'],
 })
 export class TournamentEditComponent implements OnInit {
   tournament!: Tournament;

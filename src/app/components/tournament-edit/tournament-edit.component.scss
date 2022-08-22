@@ -1,0 +1,20 @@
+.player__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.tournament__controls{
+  display: flex;
+  gap: 16px;
+}
+
+.tournament--green{
+  color: green;
+}
+.tournament--yellow{
+  color: #e6b800;
+}
+.tournament__controls__text{
+  font-weight: 600;
+  font-size: 18px;
+}

@@ -14,6 +14,8 @@
   }
 
   &__name {
+    font-size: 20px;
+    color: #228b22;
   }
 
   &__size {
@@ -40,7 +42,8 @@
   }
 }
 
-a, a:visited {
+a,
+a:visited {
   text-decoration: none;
   color: white;
   text-transform: uppercase;
@@ -52,6 +55,5 @@ a, a:visited {
 }
 a:hover {
   background-color: #228b22;
-  transition: all .3s;
+  transition: all 0.3s;
 }
-

@@ -1,0 +1,57 @@
+.tournament {
+  margin: 16px;
+  padding: 8px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 2px solid green;
+  background-color: whitesmoke;
+  border-radius: 8px;
+
+  &__header {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__name {
+  }
+
+  &__size {
+  }
+  &__players {
+    grid-column: 1 / -1;
+    display: flex;
+  }
+  &__player {
+    margin-right: 8px;
+  }
+
+  &__buttons {
+    grid-column: 4 / 5;
+    display: flex;
+    justify-content: right;
+  }
+
+  &__go {
+    margin-right: 8px;
+  }
+
+  &__edit {
+  }
+}
+
+a, a:visited {
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 4px 8px;
+  border: 2px solid green;
+  border-radius: 8px;
+  background-color: #53c653;
+}
+a:hover {
+  background-color: #228b22;
+  transition: all .3s;
+}
+

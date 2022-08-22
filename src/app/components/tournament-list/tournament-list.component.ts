@@ -5,7 +5,7 @@ import { TournamentDataService } from 'src/app/services/tournament-data.service'
 @Component({
   selector: 'app-tournament-list',
   templateUrl: './tournament-list.component.html',
-  styleUrls: ['./tournament-list.component.css'],
+  styleUrls: ['./tournament-list.component.scss'],
 })
 export class TournamentListComponent implements OnInit {
   tournaments!: Tournament[];

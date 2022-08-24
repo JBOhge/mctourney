@@ -24,6 +24,11 @@ import { OverviewEightPlayerComponent } from './components/tournament-overview/o
 import { OverviewFourPlayerComponent } from './components/tournament-overview/overviews/four-player/overview-four-player.component';
 import { OverviewSixteenPlayerComponent } from './components/tournament-overview/overviews/overview-sixteen-player/overview-sixteen-player.component';
 import { TournamentMatchComponent } from './components/tournament-match/tournament-match.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatStepperModule } from '@angular/material/stepper';
 
 @NgModule({
   declarations: [
@@ -54,6 +59,11 @@ import { TournamentMatchComponent } from './components/tournament-match/tourname
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatMenuModule,
+    MatIconModule,
+    MatInputModule,
+    MatStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent],

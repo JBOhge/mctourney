@@ -1,12 +1,34 @@
 <nav class="navbar">
-  <h1 routerLink="/" class="pointer">MCTOURNY</h1>
+  <h1 routerLink="/" class="pointer navbar__title">MCTOURNY</h1>
 
-  <a routerLink="/tournament" routerLinkActive="active">Tournament</a>
   <a
     routerLink="/tournaments"
     routerLinkActive="active"
     [routerLinkActiveOptions]="{ exact: true }"
-    >List</a
+    class="ml-8">List</a
   >
   <a routerLink="/tournaments/create" routerLinkActive="active">Create</a>
+
+  <button
+    mat-icon-button
+    [matMenuTriggerFor]="menu"
+    aria-label="icon-button with a menu"
+    class="menu"
+  >
+    <mat-icon>more_vert</mat-icon>
+  </button>
 </nav>
+
+<mat-menu
+  #menu="matMenu"
+  xPosition="before"
+>
+  <button mat-menu-item routerLink="/tournament">
+    <mat-icon>construction</mat-icon>
+    <span>Offline Tool</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>info</mat-icon>
+    <span>Info</span>
+  </button>
+</mat-menu>

@@ -6,7 +6,7 @@ import { TournamentService } from 'src/app/services/tournament.service';
 @Component({
   selector: 'app-tournament-create',
   templateUrl: './tournament-create.component.html',
-  styleUrls: ['./tournament-create.component.css'],
+  styleUrls: ['./tournament-create.component.scss'],
 })
 export class TournamentCreateComponent implements OnInit {
   tournamentForm!: FormGroup;
@@ -16,7 +16,9 @@ export class TournamentCreateComponent implements OnInit {
   ngOnInit(): void {
     this.tournamentForm = new FormGroup({
       name: new FormControl('', Validators.required),
-      size: new FormControl('4', Validators.required),
+      size: new FormControl('', Validators.required),
+      matchPointsToWin: new FormControl('', Validators.required),
+      finalMatchPointsToWin: new FormControl('', Validators.required),
     });
   }
 

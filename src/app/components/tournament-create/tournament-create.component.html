@@ -11,7 +11,83 @@
 </form>
 
 <mat-stepper orientation="vertical" #stepper>
-  <mat-step>
+  <mat-step [stepControl]="tournamentForm">
+    <form [formGroup]="tournamentForm">
+      <ng-template matStepLabel>Create A Tournament Name</ng-template>
+      <mat-form-field>
+        <mat-label>Tournament Name</mat-label>
+        <input matInput placeholder="Tournament Name" formControlName="name" />
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
 
+  <mat-step [stepControl]="tournamentForm">
+    <form [formGroup]="tournamentForm">
+      <ng-template matStepLabel>Select A Size</ng-template>
+      <mat-form-field>
+        <mat-label>Tournament Size</mat-label>
+        <mat-select formControlName="size">
+          <mat-option value="4">4 Players</mat-option>
+          <mat-option value="8">8 Players</mat-option>
+          <mat-option value="16">16 Players</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="tournamentForm">
+    <form [formGroup]="tournamentForm">
+      <ng-template matStepLabel>Match Settings</ng-template>
+      <h3>Regular Match:</h3>
+      <mat-form-field>
+        <mat-label>Points To Win</mat-label>
+        <mat-select formControlName="matchPointsToWin">
+          <mat-option value="2">2 Points (Best of 3)</mat-option>
+          <mat-option value="3">3 Points (Best of 5)</mat-option>
+          <mat-option value="4">4 Points (Best of 7)</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br />
+      <h3>Final Match:</h3>
+      <mat-form-field>
+        <mat-label>Points To Win</mat-label>
+        <mat-select formControlName="finalMatchPointsToWin">
+          <mat-option value="2">2 Points (Best of 3)</mat-option>
+          <mat-option value="3">3 Points (Best of 5)</mat-option>
+          <mat-option value="4">4 Points (Best of 7)</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="tournamentForm">
+    <form [formGroup]="tournamentForm">
+      <ng-template matStepLabel>Review</ng-template>
+      <div>
+        <p>Tournament Name: {{ this.tournamentForm.value.name }}</p>
+        <p>Tournament Size: {{ this.tournamentForm.value.size }}</p>
+        <p>
+          Regular Match Points To Win:
+          {{ this.tournamentForm.value.matchPointsToWin }}
+        </p>
+        <p>
+          Final Match Points To Win:
+          {{ this.tournamentForm.value.finalMatchPointsToWin }}
+        </p>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button >Submit</button>
+      </div>
+    </form>
   </mat-step>
 </mat-stepper>

@@ -27,7 +27,9 @@ export class TournamentCreateComponent implements OnInit {
       this.tDataService
         .createTournament(
           this.tournamentForm.value.size,
-          this.tournamentForm.value.name
+          this.tournamentForm.value.name,
+          this.tournamentForm.value.matchPointsToWin,
+          this.tournamentForm.value.finalMatchPointsToWin,
         )
         .subscribe((body) => {
           console.log(body.tournament);

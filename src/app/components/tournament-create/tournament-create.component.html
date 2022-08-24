@@ -1,15 +1,3 @@
-<form [formGroup]="tournamentForm" (ngSubmit)="onCreate()">
-  <label for="name">Name: </label>
-  <input type="text" id="name" formControlName="name" />
-  <label for="size">Size: </label>
-  <select id="size" formControlName="size">
-    <option value="4">4</option>
-    <option value="8">8</option>
-    <option value="16">16</option>
-  </select>
-  <button type="submit">Create</button>
-</form>
-
 <mat-stepper orientation="vertical" #stepper>
   <mat-step [stepControl]="tournamentForm">
     <form [formGroup]="tournamentForm">
@@ -86,7 +74,7 @@
           {{ this.tournamentForm.value.finalMatchPointsToWin }}
         </p>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button >Submit</button>
+        <button mat-button (click)="onCreate()" >Submit</button>
       </div>
     </form>
   </mat-step>

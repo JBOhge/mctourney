@@ -39,10 +39,17 @@ export class TournamentDataService {
       );
   }
 
-  createTournament(size: number, name: string) {
+  createTournament(
+    size: number,
+    name: string,
+    matchPointsToWin: string,
+    finalMatchPointsToWin: string
+  ) {
     return this.http.post<{ tournament: Tournament }>(`${api}/tournaments`, {
-      size: size,
-      name: name,
+      size,
+      name,
+      matchPointsToWin,
+      finalMatchPointsToWin,
     });
   }
 

@@ -3,18 +3,31 @@
   grid-template-columns: repeat(2, 1fr);
 }
 
-.tournament__controls{
+.tournament__controls {
   display: flex;
   gap: 16px;
 }
 
-.tournament--green{
+.tournament--green {
   color: green;
 }
-.tournament--yellow{
+.tournament--yellow {
   color: #e6b800;
 }
-.tournament__controls__text{
+.tournament__controls__text {
   font-weight: 600;
   font-size: 18px;
+}
+
+.tournament-edits {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  width: 100%;
+
+
+  &__delete-btn {
+    position: absolute;
+    transform: translate(-8px, 8px);
+  }
 }

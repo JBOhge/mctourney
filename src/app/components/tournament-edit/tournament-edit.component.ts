@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Tournament } from 'src/app/models/tournament.model';
 import { TournamentDataService } from 'src/app/services/tournament-data.service';
 
@@ -17,7 +17,8 @@ export class TournamentEditComponent implements OnInit {
 
   constructor(
     private tDataService: TournamentDataService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -78,5 +79,13 @@ export class TournamentEditComponent implements OnInit {
 
   onStartTournament() {
     this.tDataService.startTournament(this.tournament._id).subscribe();
+  }
+
+  onDelete() {
+    this.tDataService.deleteTournament(this.tournament._id).subscribe({
+      next: () => {
+        this.router.navigate(['/tournaments']);
+      },
+    });
   }
 }

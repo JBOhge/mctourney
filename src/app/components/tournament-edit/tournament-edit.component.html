@@ -1,3 +1,14 @@
+<div class="tournament-edits">
+  <button
+    mat-fab
+    color="warn"
+    class="tournament-edits__delete-btn"
+    (click)="onDelete()"
+  >
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>
+
 <form [formGroup]="tournamentForm">
   <label for="name">Name: </label>
   <input type="text" id="name" formControlName="name" />
@@ -59,7 +70,5 @@
     {{ tournament.isComplete ? "COMPLETE" : "NOT COMPLETE" }}
   </div>
 </div>
-
-<div></div>
 
 <app-tournament-overview [editMode]="true"></app-tournament-overview>

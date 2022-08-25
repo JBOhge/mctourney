@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TournamentDataService } from 'src/app/services/tournament-data.service';
-import { TournamentService } from 'src/app/services/tournament.service';
 
 @Component({
   selector: 'app-tournament-create',
@@ -11,7 +11,10 @@ import { TournamentService } from 'src/app/services/tournament.service';
 export class TournamentCreateComponent implements OnInit {
   tournamentForm!: FormGroup;
 
-  constructor(private tDataService: TournamentDataService) {}
+  constructor(
+    private tDataService: TournamentDataService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.tournamentForm = new FormGroup({
@@ -29,10 +32,12 @@ export class TournamentCreateComponent implements OnInit {
           this.tournamentForm.value.size,
           this.tournamentForm.value.name,
           this.tournamentForm.value.matchPointsToWin,
-          this.tournamentForm.value.finalMatchPointsToWin,
+          this.tournamentForm.value.finalMatchPointsToWin
         )
-        .subscribe((body) => {
-          console.log(body.tournament);
+        .subscribe({
+          next: (body) => {
+            this.router.navigate([`/tournaments/${body.tournament._id}/edit`]);
+          },
         });
     }
   }

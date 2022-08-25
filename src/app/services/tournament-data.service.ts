@@ -5,21 +5,22 @@ import { Match } from '../models/match.model';
 import { Tournament } from '../models/tournament.model';
 
 const api = 'http://localhost:3000/api/v1';
+const emptyTournament = {
+  _id: '',
+  isComplete: false,
+  isStarted: false,
+  name: '',
+  size: 0,
+  players: [],
+  matches: [],
+  winner: { _id: '', username: '' },
+};
 
 @Injectable({
   providedIn: 'root',
 })
 export class TournamentDataService {
-  public tournamentSubject = new BehaviorSubject<Tournament>({
-    _id: '',
-    isComplete: false,
-    isStarted: false,
-    name: '',
-    size: 0,
-    players: [],
-    matches: [],
-    winner: { _id: '', username: '' },
-  });
+  public tournamentSubject = new BehaviorSubject<Tournament>(emptyTournament);
 
   constructor(private http: HttpClient) {}
 
@@ -178,5 +179,15 @@ export class TournamentDataService {
       return match._id == newMatch._id ? newMatch : match;
     });
     this.tournamentSubject.next(newTournament);
+  }
+
+  deleteTournament(tournamentId: string) {
+    return this.http.delete(`${api}/tournaments/${tournamentId}`).pipe(
+      tap({
+        next: () => {
+          this.tournamentSubject.next(emptyTournament);
+        },
+      })
+    );
   }
 }

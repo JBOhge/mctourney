@@ -44,7 +44,7 @@
 <div class="tournament__controls">
   <button
     (click)="onGenerateTournament()"
-    [disabled]="tournament.isComplete || tournament.isStarted"
+    [disabled]="tournament.isComplete || tournament.isStarted || isLoading"
   >
     Generate Tournament
   </button>
@@ -71,4 +71,8 @@
   </div>
 </div>
 
-<app-tournament-overview [editMode]="true"></app-tournament-overview>
+<mat-spinner class="tournament__loading-spinner" *ngIf="isLoading; else elseBlock"></mat-spinner>
+
+<ng-template #elseBlock>
+  <app-tournament-overview [editMode]="true"></app-tournament-overview>
+</ng-template>

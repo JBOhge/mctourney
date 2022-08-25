@@ -32,6 +32,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     OverviewEightPlayerComponent,
     OverviewSixteenPlayerComponent,
     TournamentMatchComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -70,7 +70,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatStepperModule,
     MatButtonModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

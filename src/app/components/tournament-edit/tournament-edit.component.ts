@@ -15,6 +15,7 @@ export class TournamentEditComponent implements OnInit {
   id!: string;
   tournamentForm!: FormGroup;
   playerForm!: FormGroup;
+  isLoading = false;
 
   constructor(
     private tDataService: TournamentDataService,
@@ -53,7 +54,6 @@ export class TournamentEditComponent implements OnInit {
       .updateTournamentSize(this.tournamentForm.value.size, this.tournament._id)
       .subscribe({
         error: (err) => {
-          console.log(err);
           this.snackBar.open(err.error.message, 'OK', { duration: 10000 });
         },
       });
@@ -68,7 +68,6 @@ export class TournamentEditComponent implements OnInit {
       )
       .subscribe({
         error: (err) => {
-          console.log(err);
           this.snackBar.open(err.error.message, 'OK', { duration: 10000 });
         },
       });
@@ -83,7 +82,6 @@ export class TournamentEditComponent implements OnInit {
         .removePlayer(player[0]._id, this.tournament._id)
         .subscribe({
           error: (err) => {
-            console.log(err);
             this.snackBar.open(err.error.message, 'OK', { duration: 10000 });
           },
         });
@@ -91,9 +89,13 @@ export class TournamentEditComponent implements OnInit {
   }
 
   onGenerateTournament() {
+    this.isLoading = true;
     this.tDataService.generateTournament(this.tournament._id).subscribe({
+      next: ()=>{
+        this.isLoading = false;
+      },
       error: (err) => {
-        console.log(err);
+        this.isLoading = false;
         this.snackBar.open(err.error.message, 'OK', { duration: 10000 });
       },
     });
@@ -102,7 +104,6 @@ export class TournamentEditComponent implements OnInit {
   onStartTournament() {
     this.tDataService.startTournament(this.tournament._id).subscribe({
       error: (err) => {
-        console.log(err);
         this.snackBar.open(err.error.message, 'OK', { duration: 10000 });
       },
     });

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Match } from 'src/app/models/match.model';
 import { TournamentDataService } from 'src/app/services/tournament-data.service';
 import { TournamentService } from 'src/app/services/tournament.service';
@@ -12,7 +13,10 @@ export class TournamentMatchComponent implements OnInit {
   @Input() match!: Match;
   @Input() editMode!: boolean;
 
-  constructor(private tDataService: TournamentDataService) {}
+  constructor(
+    private tDataService: TournamentDataService,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {}
 
@@ -24,7 +28,12 @@ export class TournamentMatchComponent implements OnInit {
           ? this.match.firstPlayer._id
           : this.match.secondPlayer._id
       )
-      .subscribe();
+      .subscribe({
+        error: (err) => {
+          console.log(err);
+          this.snackBar.open(err.error.message, 'OK', { duration: 10000 });
+        },
+      });
   }
 
   decrementScore(playerNumber: number) {
@@ -35,7 +44,12 @@ export class TournamentMatchComponent implements OnInit {
           ? this.match.firstPlayer._id
           : this.match.secondPlayer._id
       )
-      .subscribe();
+      .subscribe({
+        error: (err) => {
+          console.log(err);
+          this.snackBar.open(err.error.message, 'OK', { duration: 10000 });
+        },
+      });
   }
 
   undoWinner(playerNumber: number) {
@@ -46,6 +60,11 @@ export class TournamentMatchComponent implements OnInit {
           ? this.match.firstPlayer._id
           : this.match.secondPlayer._id
       )
-      .subscribe();
+      .subscribe({
+        error: (err) => {
+          console.log(err);
+          this.snackBar.open(err.error.message, 'OK', { duration: 10000 });
+        },
+      });
   }
 }

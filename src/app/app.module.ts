@@ -33,6 +33,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { DeleteConfirmDialogComponent } from './components/delete-confirm-dialog/delete-confirm-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     OverviewEightPlayerComponent,
     OverviewSixteenPlayerComponent,
     TournamentMatchComponent,
+    DeleteConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,6 +75,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatSelectModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

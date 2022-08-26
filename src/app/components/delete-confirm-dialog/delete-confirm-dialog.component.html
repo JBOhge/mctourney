@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Delete Tournament</h1>
+<div mat-dialog-content>
+  <p>Are you sure you want to delete: {{ data.tournamentName }}?</p>
+  <div class="mat-dialog__buttons">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button
+      mat-button
+      color="warn"
+      [mat-dialog-close]="true"
+      (click)="onDeleteConfirm()"
+    >
+      Delete
+    </button>
+  </div>
+</div>

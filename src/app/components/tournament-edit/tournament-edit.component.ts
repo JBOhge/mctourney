@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Tournament } from 'src/app/models/tournament.model';
 import { TournamentDataService } from 'src/app/services/tournament-data.service';
+import { DeleteConfirmDialogComponent } from '../delete-confirm-dialog/delete-confirm-dialog.component';
 
 @Component({
   selector: 'app-tournament-edit',
@@ -21,7 +23,8 @@ export class TournamentEditComponent implements OnInit {
     private tDataService: TournamentDataService,
     private route: ActivatedRoute,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -91,7 +94,7 @@ export class TournamentEditComponent implements OnInit {
   onGenerateTournament() {
     this.isLoading = true;
     this.tDataService.generateTournament(this.tournament._id).subscribe({
-      next: ()=>{
+      next: () => {
         this.isLoading = false;
       },
       error: (err) => {
@@ -110,9 +113,16 @@ export class TournamentEditComponent implements OnInit {
   }
 
   onDelete() {
-    this.tDataService.deleteTournament(this.tournament._id).subscribe({
-      next: () => {
-        this.router.navigate(['/tournaments']);
+    // this.tDataService.deleteTournament(this.tournament._id).subscribe({
+    //   next: () => {
+    //     this.router.navigate(['/tournaments']);
+    //   },
+    // });
+
+    this.dialog.open(DeleteConfirmDialogComponent, {
+      data: {
+        tournamentId: this.tournament._id,
+        tournamentName: this.tournament.name,
       },
     });
   }

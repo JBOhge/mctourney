@@ -6,12 +6,13 @@ import { TournamentDataService } from 'src/app/services/tournament-data.service'
 @Component({
   selector: 'app-tournament-overview',
   templateUrl: './tournament-overview.component.html',
-  styleUrls: ['./tournament-overview.component.css'],
+  styleUrls: ['./tournament-overview.component.scss'],
 })
 export class TournamentOverviewComponent implements OnInit {
   @Input() editMode = false;
   id!: string;
   tournament!: Tournament;
+  isLoading = false;
 
   constructor(
     private tDataService: TournamentDataService,
@@ -20,12 +21,20 @@ export class TournamentOverviewComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.route.params.subscribe((params: Params) => {
       this.id = params['id'];
       this.tDataService.tournamentSubject.subscribe((tournament) => {
         this.tournament = tournament;
       });
-      this.tDataService.getTournament(this.id).subscribe();
+      this.tDataService.getTournament(this.id).subscribe({
+        next: () => {
+          this.isLoading = false;
+        },
+        error: () => {
+          this.isLoading = false;
+        },
+      });
     });
   }
 }

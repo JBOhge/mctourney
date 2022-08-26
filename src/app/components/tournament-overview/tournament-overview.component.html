@@ -1,6 +1,8 @@
-<div *ngIf="tournament">
-
-  <div class="overview__tournament" *ngIf="tournament.matches.length > 0; else emptyTournament">
+<div *ngIf="tournament && !isLoading; else loadingSpinner">
+  <div
+    class="overview__tournament"
+    *ngIf="tournament.matches.length > 0; else emptyTournament"
+  >
     <app-overview-sixteen-player
       [editMode]="editMode"
       *ngIf="tournament.size === 16"
@@ -19,3 +21,6 @@
     <p>This tournament has not been generated yet.</p>
   </ng-template>
 </div>
+<ng-template #loadingSpinner>
+  <mat-spinner class="tournament__loading-spinner"></mat-spinner>
+</ng-template>

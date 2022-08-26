@@ -25,11 +25,7 @@ export class TournamentOverviewComponent implements OnInit {
       this.tDataService.tournamentSubject.subscribe((tournament) => {
         this.tournament = tournament;
       });
-      this.tDataService.getTournament(this.id).subscribe({
-        next: (body) => {
-          console.log(body);
-        },
-      });
+      this.tDataService.getTournament(this.id).subscribe();
     });
   }
 }

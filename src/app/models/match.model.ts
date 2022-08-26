@@ -5,6 +5,7 @@ export class Match {
   public scoreFirstPlayer: number = 0;
   public scoreSecondPlayer: number = 0;
   public winner?: Player;
+  public pointsToWin?: number;
   public nextMatch?: string;
   public nextMatchPosition?: string;
   public tournament?: string;

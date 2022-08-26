@@ -67,4 +67,8 @@ export class TournamentMatchComponent implements OnInit {
         },
       });
   }
+
+  getBestOf() {
+    return 'BO' + String(this.match.pointsToWin! * 2 - 1);
+  }
 }

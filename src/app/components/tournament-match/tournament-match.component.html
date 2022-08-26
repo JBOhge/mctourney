@@ -1,9 +1,15 @@
 <div class="match">
-  <div class="match__player">
+  <div class="match__bestof">{{getBestOf()}}</div>
+  <div
+    class="match__player"
+    [ngClass]="{'match__player--winner': match.winner && match.winner._id == match.firstPlayer._id}"
+  >
     <button
       (click)="undoWinner(1)"
       *ngIf="
-        editMode && match.previousMatchFirstPlayer && match.firstPlayer.username != 'TBD'
+        editMode &&
+        match.previousMatchFirstPlayer &&
+        match.firstPlayer.username != 'TBD'
       "
       [disabled]="match.winner"
     >
@@ -30,11 +36,13 @@
     </div>
   </div>
   <p class="match__text">VS.</p>
-  <div class="match__player">
+  <div class="match__player" [ngClass]="{'match__player--winner': match.winner && match.winner._id == match.secondPlayer._id}">
     <button
       (click)="undoWinner(2)"
       *ngIf="
-        editMode && match.previousMatchSecondPlayer && match.secondPlayer.username != 'TBD'
+        editMode &&
+        match.previousMatchSecondPlayer &&
+        match.secondPlayer.username != 'TBD'
       "
       [disabled]="match.winner"
     >

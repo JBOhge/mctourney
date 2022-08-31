@@ -1,3 +1,24 @@
 .tournament__loading-spinner {
   margin: 32px auto;
 }
+.tournament__winner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.tournament__winner {
+  font-size: 56px;
+  text-align: center;
+  margin: 16px auto;
+  
+  &-image {
+    width: 80px;
+    height: 80px;
+    margin-right: 32px;
+  }
+  &-header {
+    margin-right: 32px;
+  }
+  &-username {
+  }
+}

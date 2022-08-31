@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Match } from 'src/app/models/match.model';
-import { TournamentDataService } from 'src/app/tournament/services/tournament-data.service';
+import { TournamentDataService } from 'src/app/services/tournament-data.service';
 
 @Component({
   selector: 'app-tournament-match',

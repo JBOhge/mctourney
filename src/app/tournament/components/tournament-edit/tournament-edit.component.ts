@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Tournament } from 'src/app/models/tournament.model';
-import { TournamentDataService } from 'src/app/tournament/services/tournament-data.service';
+import { TournamentDataService } from 'src/app/services/tournament-data.service';
 import { DeleteConfirmDialogComponent } from '../delete-confirm-dialog/delete-confirm-dialog.component';
 
 @Component({

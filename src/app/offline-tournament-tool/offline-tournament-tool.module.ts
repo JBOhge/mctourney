@@ -13,7 +13,7 @@ import { OverviewComponent } from './components/overview/overview.component';
 import { MatchListComponent } from './components/match-list/match-list.component';
 
 const appRoutes: Routes = [
-  { path: 'tournament', component: OverviewComponent },
+  { path: '', component: OverviewComponent },
 ];
 
 @NgModule({
@@ -27,6 +27,11 @@ const appRoutes: Routes = [
     SixteenPlayerComponent,
     PlayerListComponent,
   ],
-  imports: [CommonModule, SharedModule, RouterModule.forChild(appRoutes), ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    SharedModule,
+    RouterModule.forChild(appRoutes),
+    ReactiveFormsModule,
+  ],
 })
 export class OfflineTournamentToolModule {}

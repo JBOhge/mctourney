@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TournamentDataService } from 'src/app/tournament/services/tournament-data.service';
+import { TournamentDataService } from 'src/app/services/tournament-data.service';
 
 @Component({
   selector: 'app-tournament-create',

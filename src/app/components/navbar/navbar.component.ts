@@ -1,15 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/models/user.model';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
+  user!: User;
 
-  constructor() { }
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
+    this.authService.userSubject.subscribe((logedInUser) => {
+      this.user = logedInUser;
+      console.log(this.user);
+    });
   }
-
 }

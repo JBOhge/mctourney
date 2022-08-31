@@ -1,4 +1,15 @@
 <div *ngIf="tournament && !isLoading; else loadingSpinner">
+  <div class="tournament__winner" *ngIf="tournament.winner">
+    <div class="tournament__winner-header">Winner:</div>
+    <img
+      class="tournament__winner-image"
+      [src]="'https://mc-heads.net/avatar/' + tournament.winner.username"
+      alt=""
+    />
+    <div class="tournament__winner-username">
+      {{ tournament.winner.username }}
+    </div>
+  </div>
   <div
     class="overview__tournament"
     *ngIf="tournament.matches.length > 0; else emptyTournament"

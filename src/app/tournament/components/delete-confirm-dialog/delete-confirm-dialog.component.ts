@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { TournamentDataService } from 'src/app/tournament/services/tournament-data.service';
+import { TournamentDataService } from 'src/app/services/tournament-data.service';
 
 @Component({
   selector: 'app-delete-confirm-dialog',

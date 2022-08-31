@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Tournament } from 'src/app/models/tournament.model';
-import { TournamentDataService } from 'src/app/tournament/services/tournament-data.service';
+import { TournamentDataService } from 'src/app/services/tournament-data.service';
 
 @Component({
   selector: 'app-overview-four-player',

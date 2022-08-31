@@ -1,29 +1,43 @@
 <nav class="navbar">
-  <h1 routerLink="/" class="pointer navbar__title">MCTOURNY</h1>
+  <div class="navbar__left-side">
+    <h1 routerLink="/" class="pointer navbar__title">MCTOURNY</h1>
+    <a
+      routerLink="/tournaments"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="ml-8"
+      >Tournaments</a
+    >
+    <a routerLink="/tournaments/create" routerLinkActive="active">Create</a>
+  </div>
 
-  <a
-    routerLink="/tournaments"
-    routerLinkActive="active"
-    [routerLinkActiveOptions]="{ exact: true }"
-    class="ml-8">List</a
-  >
-  <a routerLink="/tournaments/create" routerLinkActive="active">Create</a>
+  <div class="navbar__right-side">
+    <ng-template [ngIf]="user.playername" >
+      <img
+        class="navbar__right-side--image"
+        [src]="'https://mc-heads.net/avatar/' + user.playername"
+        alt=""
+      />
+      <h1 class="navbar__right-side--playername">{{ user.playername }}</h1>
+    </ng-template>
 
-  <button
-    mat-icon-button
-    [matMenuTriggerFor]="menu"
-    aria-label="icon-button with a menu"
-    class="menu"
-  >
-    <mat-icon>more_vert</mat-icon>
-  </button>
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      aria-label="icon-button with a menu"
+      class="menu"
+    >
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </div>
 </nav>
 
-<mat-menu
-  #menu="matMenu"
-  xPosition="before"
->
-  <button mat-menu-item routerLink="/tournament">
+<mat-menu #menu="matMenu" xPosition="before">
+  <button mat-menu-item routerLink="/login">
+    <mat-icon>login</mat-icon>
+    <span>Login</span>
+  </button>
+  <button mat-menu-item routerLink="/offlinetool">
     <mat-icon>construction</mat-icon>
     <span>Offline Tool</span>
   </button>

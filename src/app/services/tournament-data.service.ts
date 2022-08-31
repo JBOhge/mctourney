@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, tap } from 'rxjs';
-import { Match } from '../../models/match.model';
-import { Tournament } from '../../models/tournament.model';
+import { Match } from '../models/match.model';
+import { Tournament } from '../models/tournament.model';
 
 const api = 'http://localhost:3000/api/v1';
 const emptyTournament = {
@@ -46,12 +46,16 @@ export class TournamentDataService {
     matchPointsToWin: string,
     finalMatchPointsToWin: string
   ) {
-    return this.http.post<{ tournament: Tournament }>(`${api}/tournaments`, {
-      size,
-      name,
-      matchPointsToWin,
-      finalMatchPointsToWin,
-    });
+    return this.http.post<{ tournament: Tournament }>(
+      `${api}/tournaments`,
+      {
+        size,
+        name,
+        matchPointsToWin,
+        finalMatchPointsToWin,
+      },
+      { withCredentials: true }
+    );
   }
 
   updateTournamentSize(size: number, tournamentId: string) {

@@ -12,7 +12,7 @@
   </div>
 
   <div class="navbar__right-side">
-    <ng-template [ngIf]="user.playername" >
+    <ng-template [ngIf]="user.playername">
       <img
         class="navbar__right-side--image"
         [src]="'https://mc-heads.net/avatar/' + user.playername"
@@ -33,10 +33,21 @@
 </nav>
 
 <mat-menu #menu="matMenu" xPosition="before">
-  <button mat-menu-item routerLink="/login">
+  <button
+    mat-menu-item
+    routerLink="/login"
+    *ngIf="!user.playername; else logout"
+  >
     <mat-icon>login</mat-icon>
     <span>Login</span>
   </button>
+  <ng-template #logout>
+    <button mat-menu-item (click)="onLogout()">
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </button>
+  </ng-template>
+
   <button mat-menu-item routerLink="/offlinetool">
     <mat-icon>construction</mat-icon>
     <span>Offline Tool</span>

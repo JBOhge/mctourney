@@ -18,4 +18,8 @@ export class NavbarComponent implements OnInit {
       console.log(this.user);
     });
   }
+
+  onLogout() {
+    this.authService.logout().subscribe();
+  }
 }

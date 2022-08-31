@@ -12,7 +12,12 @@
   </div>
   <div class="tournament__buttons">
     <a class="tournament__go" [routerLink]="[tournament._id]">go</a>
-    <a class="tournament__edit" [routerLink]="[tournament._id, 'edit']">edit</a>
+    <a
+      class="tournament__edit"
+      [routerLink]="[tournament._id, 'edit']"
+      *ngIf="user.playername"
+      >edit</a
+    >
   </div>
   <br />
 </div>

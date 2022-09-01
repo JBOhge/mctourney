@@ -1,16 +1,23 @@
 <form [formGroup]="registerForm" class="register" (ngSubmit)="onRegister()">
   <mat-form-field class="register__field" appearance="fill">
     <mat-label>Email</mat-label>
-    <input matInput type="text" formControlName="email" />
+    <input matInput type="email" formControlName="email" />
+  </mat-form-field>
+  <mat-form-field class="register__field" appearance="fill">
+    <mat-label>Playername</mat-label>
+    <input matInput type="text" formControlName="playername" />
+    <div class="register__error" *ngIf="playername &&  playername.touched && playername.errors?.['invalidPlayername']">Invalid Playername.</div>
   </mat-form-field>
 
   <mat-form-field class="register__field" appearance="fill">
     <mat-label>Password</mat-label>
-    <input matInput type="text" formControlName="password" />
+    <input matInput type="password" formControlName="password" />
+    <div class="register__error" *ngIf="password &&  password.touched && password.errors?.['minlength']">Password must be at least 8 characters long.</div>
   </mat-form-field>
   <mat-form-field class="register__field" appearance="fill">
     <mat-label>Confirm Password</mat-label>
-    <input matInput type="text" formControlName="passwordConfirm" />
+    <input matInput type="password" formControlName="passwordConfirm" />
   </mat-form-field>
-  <button mat-raised-button type="submit">Register</button>
+  <div *ngIf="isPasswordMatchError()" class="register__error">Passwords do not match</div>
+  <button mat-raised-button type="submit" [disabled]="registerForm.invalid">Register</button>
 </form>

@@ -53,4 +53,25 @@ export class AuthService {
       })
     );
   }
+
+  signup(
+    email: string,
+    playername: string,
+    password: string,
+    passwordConfirm: string
+  ) {
+    return this.http
+      .post<{ status: string; data: { user: User } }>(`${api}/users/signup`, {
+        email,
+        playername,
+        password,
+        passwordConfirm,
+      })
+      .pipe(
+        tap((res) => {
+          this.userSubject.next(res.data.user);
+          localStorage.setItem('userData', JSON.stringify(res.data.user));
+        })
+      );
+  }
 }

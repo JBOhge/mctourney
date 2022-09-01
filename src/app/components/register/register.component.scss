@@ -1,0 +1,16 @@
+.register {
+  width: 75%;
+  margin: 32px auto;
+
+  &__field {
+    display: block;
+  }
+
+  &__error {
+    color: #f44336;
+  }
+}
+
+.divider {
+  margin: 16px 0;
+}

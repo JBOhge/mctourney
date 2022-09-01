@@ -9,4 +9,11 @@
     <input matInput type="text" formControlName="password" />
   </mat-form-field>
   <button mat-raised-button type="submit">Login</button>
+
+  <mat-divider class="divider"></mat-divider>
+
+  <p>Don't have an account?</p>
+  <button mat-raised-button [routerLink]="['/register']" type="button">
+    Register
+  </button>
 </form>

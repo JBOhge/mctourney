@@ -74,4 +74,18 @@ export class AuthService {
         })
       );
   }
+
+  isLoggedIn() {
+    return this.http
+      .get<{ success: string; data?: { user: User } }>(
+        `${api}/users/loggedincheck`
+      )
+      .pipe(
+        tap((res) => {
+          if (res.data && res.data.user) {
+            this.userSubject.next(res.data.user);
+          }
+        })
+      );
+  }
 }

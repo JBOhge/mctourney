@@ -7,6 +7,7 @@ import {
   AbstractControl,
   ValidationErrors,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -24,7 +25,7 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.get('playername');
   }
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.registerForm = new FormGroup(
@@ -53,7 +54,11 @@ export class RegisterComponent implements OnInit {
           this.registerForm.value.password,
           this.registerForm.value.passwordConfirm
         )
-        .subscribe();
+        .subscribe({
+          next: (res) => {
+            this.router.navigate(['/tournaments']);
+          },
+        });
     }
   }
 

@@ -14,6 +14,7 @@ const emptyTournament = {
   players: [],
   matches: [],
   winner: { _id: '', username: '' },
+  owner: { _id: '', username: '' },
 };
 
 @Injectable({

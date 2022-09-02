@@ -5,9 +5,10 @@ export interface Tournament {
   _id: string;
   isStarted: boolean;
   isComplete: boolean;
-  name: string,
+  name: string;
   size: number;
   players: Player[];
   matches: Match[];
   winner: Player;
+  owner: Player;
 }

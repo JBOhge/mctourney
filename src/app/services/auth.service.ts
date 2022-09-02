@@ -82,7 +82,7 @@ export class AuthService {
       )
       .pipe(
         tap((res) => {
-          if (res.data && res.data.user) {
+          if (res && res.data && res.data.user) {
             this.userSubject.next(res.data.user);
           }
         })

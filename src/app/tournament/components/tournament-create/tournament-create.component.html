@@ -61,6 +61,23 @@
 
   <mat-step [stepControl]="tournamentForm">
     <form [formGroup]="tournamentForm">
+      <ng-template matStepLabel>Visability</ng-template>
+      <mat-form-field>
+        <mat-label>Visability</mat-label>
+        <mat-select formControlName="isPublic">
+          <mat-option value="true">Public</mat-option>
+          <mat-option value="false">Private</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="tournamentForm">
+    <form [formGroup]="tournamentForm">
       <ng-template matStepLabel>Review</ng-template>
       <div>
         <p>Tournament Name: {{ this.tournamentForm.value.name }}</p>
@@ -73,8 +90,9 @@
           Final Match Points To Win:
           {{ this.tournamentForm.value.finalMatchPointsToWin }}
         </p>
+        <p>Visability: {{ this.tournamentForm.value.isPublic == 'true' ? 'Public' : 'Private' }}</p>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="onCreate()" >Submit</button>
+        <button mat-button (click)="onCreate()">Submit</button>
       </div>
     </form>
   </mat-step>

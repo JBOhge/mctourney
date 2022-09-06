@@ -22,6 +22,7 @@ export class TournamentCreateComponent implements OnInit {
       size: new FormControl('', Validators.required),
       matchPointsToWin: new FormControl('', Validators.required),
       finalMatchPointsToWin: new FormControl('', Validators.required),
+      isPublic: new FormControl('true', Validators.required),
     });
   }
 
@@ -32,7 +33,8 @@ export class TournamentCreateComponent implements OnInit {
           this.tournamentForm.value.size,
           this.tournamentForm.value.name,
           this.tournamentForm.value.matchPointsToWin,
-          this.tournamentForm.value.finalMatchPointsToWin
+          this.tournamentForm.value.finalMatchPointsToWin,
+          this.tournamentForm.value.isPublic
         )
         .subscribe({
           next: (body) => {

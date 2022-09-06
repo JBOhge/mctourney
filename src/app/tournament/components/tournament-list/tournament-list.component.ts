@@ -26,4 +26,10 @@ export class TournamentListComponent implements OnInit {
       this.user = newUser;
     });
   }
+
+  getMyTournaments() {
+    this.tDataService.getMyTournaments().subscribe((data) => {
+      this.tournaments = data.tournaments;
+    });
+  }
 }

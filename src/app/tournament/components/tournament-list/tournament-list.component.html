@@ -1,3 +1,4 @@
+<button mat-raised-button (click)="getMyTournaments()">My Tournaments</button>
 <div *ngFor="let tournament of tournaments" class="tournament">
   <div class="tournament__header">
     <div class="tournament__name">{{ tournament.name | uppercase }}</div>

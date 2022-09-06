@@ -41,11 +41,16 @@ export class TournamentDataService {
       );
   }
 
+  getMyTournaments() {
+    return this.http.get<{ tournaments: Tournament[] }>(`${api}/tournaments/mytournaments`);
+  }
+
   createTournament(
     size: number,
     name: string,
     matchPointsToWin: string,
-    finalMatchPointsToWin: string
+    finalMatchPointsToWin: string,
+    isPublic: boolean
   ) {
     return this.http.post<{ tournament: Tournament }>(
       `${api}/tournaments`,
@@ -54,6 +59,7 @@ export class TournamentDataService {
         name,
         matchPointsToWin,
         finalMatchPointsToWin,
+        isPublic,
       },
       { withCredentials: true }
     );

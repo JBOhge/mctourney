@@ -14,6 +14,8 @@ import { SharedModule } from '../shared/shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TournamentRoutingModule } from './tournament-routing.module';
+import { PublicListComponent } from './components/public-list/public-list.component';
+import { MyListComponent } from './components/my-list/my-list.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { TournamentRoutingModule } from './tournament-routing.module';
     OverviewSixteenPlayerComponent,
     TournamentMatchComponent,
     DeleteConfirmDialogComponent,
+    PublicListComponent,
+    MyListComponent,
   ],
   imports: [
     CommonModule,

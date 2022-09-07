@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Tournament } from 'src/app/models/tournament.model';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
@@ -10,26 +10,17 @@ import { TournamentDataService } from 'src/app/services/tournament-data.service'
   styleUrls: ['./tournament-list.component.scss'],
 })
 export class TournamentListComponent implements OnInit {
-  tournaments!: Tournament[];
+  @Input() tournaments!: Tournament[];
   user!: User;
 
   constructor(
-    private tDataService: TournamentDataService,
     private authService: AuthService
   ) {}
 
   ngOnInit(): void {
-    this.tDataService.getTournaments().subscribe((data) => {
-      this.tournaments = data.tournaments;
-    });
     this.authService.userSubject.subscribe((newUser) => {
       this.user = newUser;
     });
   }
 
-  getMyTournaments() {
-    this.tDataService.getMyTournaments().subscribe((data) => {
-      this.tournaments = data.tournaments;
-    });
-  }
 }

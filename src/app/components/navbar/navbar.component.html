@@ -8,7 +8,15 @@
       class="ml-8"
       >Tournaments</a
     >
-    <a routerLink="/tournaments/create" routerLinkActive="active">Create</a>
+    <a
+      routerLink="/tournaments/mytournaments"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="ml-8"
+      *ngIf="user._id"
+      >My Tournaments</a
+    >
+    <a routerLink="/tournaments/create" routerLinkActive="active" *ngIf="user._id">Create</a>
   </div>
 
   <div class="navbar__right-side">

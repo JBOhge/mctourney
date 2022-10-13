@@ -42,7 +42,9 @@ export class TournamentDataService {
   }
 
   getMyTournaments() {
-    return this.http.get<{ tournaments: Tournament[] }>(`${api}/tournaments/mytournaments`);
+    return this.http.get<{ tournaments: Tournament[] }>(
+      `${api}/tournaments/mytournaments`
+    );
   }
 
   createTournament(
@@ -143,7 +145,10 @@ export class TournamentDataService {
         match: Match;
         nextMatch?: Match;
         tournament?: Tournament;
-      }>(`${api}/matches/${matchId}/increment`, { playerId: playerId })
+      }>(
+        `${api}/matches/${this.tournamentSubject.value._id}/${matchId}/increment`,
+        { playerId: playerId }
+      )
       .pipe(
         tap((body) => {
           if (body.tournament) {
@@ -158,9 +163,12 @@ export class TournamentDataService {
 
   decrementMatchScore(matchId: string, playerId: string) {
     return this.http
-      .put<{ match: Match }>(`${api}/matches/${matchId}/decrement`, {
-        playerId: playerId,
-      })
+      .put<{ match: Match }>(
+        `${api}/matches/${this.tournamentSubject.value._id}/${matchId}/decrement`,
+        {
+          playerId: playerId,
+        }
+      )
       .pipe(
         tap((body) => {
           this.processMatchUpdate(body.match);
@@ -171,7 +179,7 @@ export class TournamentDataService {
   undoMatchWinner(matchId: string, playerId: string) {
     return this.http
       .put<{ match: Match; previousMatch: Match }>(
-        `${api}/matches/${matchId}/undo`,
+        `${api}/matches/${this.tournamentSubject.value._id}/${matchId}/undo`,
         {
           playerId: playerId,
         }

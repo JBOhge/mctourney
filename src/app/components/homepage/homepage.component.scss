@@ -1,0 +1,78 @@
+@import "../../app.variables.scss";
+
+.hero {
+  height: 95vh;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-grey-dark, 0.8),
+      rgba($color-grey-dark-2, 0.8)
+    ),
+    url(../../../assets/images/mc1.png);
+  background-size: cover;
+  background-position: top;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__headertext {
+    display: inline-block;
+    color: white;
+    font-size: 100px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    animation: moveInRight;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+
+    @media (max-width: 768px) {
+      font-size: 54px;
+    }
+
+
+  }
+  &__headerinfo {
+    display: inline-block;
+    color: white;
+    font-size: 24px;
+    font-weight: 400;
+    animation: moveInLeft;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+  }
+
+
+}
+
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+
+  80% {
+    transform: translateX(-1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+
+  80% {
+    transform: translateX(1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}

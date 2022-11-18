@@ -23,9 +23,11 @@
   &__players {
     grid-column: 1 / -1;
     display: flex;
+    flex-wrap: wrap;
   }
   &__player {
     margin-right: 8px;
+
   }
 
   &__buttons {
